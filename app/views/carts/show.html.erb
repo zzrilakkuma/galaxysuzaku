@@ -1,0 +1,24 @@
+<h1>Your Cart</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |item| %>
+      <tr>
+        <td><%= item[:product].name %></td>
+        <td><%= item[:quantity] %></td>
+        <td><%= item[:product].price %></td>
+        <td><%= item[:quantity] * item[:product].price %></td>
+        <td><%= link_to 'Remove', remove_from_cart_path(item[:product].id), method: :delete, data: { 'turbo-method': :delete } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
