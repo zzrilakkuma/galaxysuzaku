@@ -15,4 +15,19 @@ class CartsController < ApplicationController
     session[:cart] = cart
     redirect_to cart_path, notice: 'Product removed from cart'
   end
+
+  def checkout
+    @cart_items = cart_items
+  end
+
+  private
+
+  def cart_items
+    current_cart.map do |product_id, quantity|
+      {
+        product: Product.find(product_id),
+        quantity: quantity
+      }
+    end
+  end
 end

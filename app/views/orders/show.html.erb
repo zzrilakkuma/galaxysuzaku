@@ -1,18 +1,24 @@
 <h1>Order Details</h1>
 
 <table>
-  <tr>
-    <th>Product Name:</th>
-    <td><%= @order.product.name %></td>
-  </tr>
-  <tr>
-    <th>Quantity:</th>
-    <td><%= @order.quantity %></td>
-  </tr>
-  <tr>
-    <th>Total Price:</th>
-    <td><%= number_to_currency(@order.product.price * @order.quantity) %></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.product.name %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= number_to_currency(order_item.product.price) %></td>
+        <td><%= number_to_currency(order_item.product.price * order_item.quantity) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<%= link_to 'Back', @order.product %>
+<%= link_to 'Back', root_path %>

@@ -1,4 +1,4 @@
-<h1>Your Cart</h1>
+<h1>Order Confirmation</h1>
 
 <table>
   <thead>
@@ -7,7 +7,6 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Total</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,10 +16,11 @@
         <td><%= item[:quantity] %></td>
         <td><%= item[:product].price %></td>
         <td><%= item[:quantity] * item[:product].price %></td>
-        <td><%= link_to 'Remove', remove_from_cart_path(item[:product].id), method: :delete, data: { 'turbo-method': :delete } %></td>
       </tr>
     <% end %>
-
-    <%= link_to 'Checkout', checkout_path, class: 'checkout-button' %>
   </tbody>
 </table>
+
+<%= form_with url: orders_path, method: :post do |form| %>
+  <%= form.submit 'Place Order' %>
+<% end %>

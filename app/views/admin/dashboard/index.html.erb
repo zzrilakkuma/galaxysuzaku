@@ -1,5 +1,8 @@
 <h1>管理者儀表板</h1>
 
+<li><%= link_to 'Sign Out', destroy_admin_session_path, method: :delete, data: { 'turbo-method': :delete } %></li>
+<li><%= link_to 'Home Page', root_path %></li>
+
 <div>
   <h2>最近的訂單</h2>
   <table>
@@ -44,4 +47,9 @@
       </li>
     <% end %>
   </ul>
+</div>
+
+<div>
+<%= link_to 'All Orders', admin_orders_path %>
+<%= link_to 'Products', admin_products_path %>
 </div>
