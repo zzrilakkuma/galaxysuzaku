@@ -1,0 +1,47 @@
+<h1>管理者儀表板</h1>
+
+<div>
+  <h2>最近的訂單</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>用戶</th>
+        <th>狀態</th>
+        <th>創建時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.first(10).each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.user.email %></td>
+          <td><%= order.status %></td>
+          <td><%= order.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h2>最近註冊的用戶</h2>
+  <ul>
+    <% @users.first(10).each do |user| %>
+      <li>
+        <%= user.email %> - <%= user.created_at %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <h2>最近添加的產品</h2>
+  <ul>
+    <% @products.first(10).each do |product| %>
+      <li>
+        <%= product.name %> - <%= product.created_at %>
+      </li>
+    <% end %>
+  </ul>
+</div>

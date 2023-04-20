@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyStore</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <% if admin_signed_in? %>
+    <li><%= link_to 'Dashboard', admin_dashboard_path %></li>
+    <li><%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %></li>
+  <% elsif user_signed_in? %>
+    <li><%= link_to 'Profile', edit_user_registration_path %></li>
+    <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to 'Admin Sign In', new_admin_session_path %></li>
+    <li><%= link_to 'Admin Sign Up', new_admin_registration_path %></li>
+    <li><%= link_to 'User Sign In', new_user_session_path %></li>
+    <li><%= link_to 'User Sign Up', new_user_registration_path %></li>
+  <% end %>
+
+  <%= yield %>
+  </body>
+</html>

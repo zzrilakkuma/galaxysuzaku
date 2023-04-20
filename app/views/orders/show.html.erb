@@ -1,0 +1,18 @@
+<h1>Order Details</h1>
+
+<table>
+  <tr>
+    <th>Product Name:</th>
+    <td><%= @order.product.name %></td>
+  </tr>
+  <tr>
+    <th>Quantity:</th>
+    <td><%= @order.quantity %></td>
+  </tr>
+  <tr>
+    <th>Total Price:</th>
+    <td><%= number_to_currency(@order.product.price * @order.quantity) %></td>
+  </tr>
+</table>
+
+<%= link_to 'Back', @order.product %>
