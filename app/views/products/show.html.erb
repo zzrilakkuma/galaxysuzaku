@@ -1,17 +1,20 @@
 <div class="product-container">
-    <h2 class="product-name"><%= @product.name %></h2>
-    <p class="product-description"><%= @product.description %></p>
-    <p class="product-price"><%= number_to_currency(@product.price) %></p>
-
-    <div class="product-action">
-      <%= link_to 'Back', products_path, class: 'btn btn-secondary' %>
+    <img src="https://via.placeholder.com/300" alt="Product Image">
+    <div class="product-show-container">
+      <h1 class="product-name"><%= @product.name %></h1>
+      <p class="product-description"><%= @product.description %></p>
+      <p class="product-price"><%= number_to_currency(@product.price) %></p>
+      <div class="product-action">
+        <%= form_with url: add_to_cart_path(@product.id), method: :post do |form| %>
+          <%= form.label :quantity, "Quantity" %>
+          <%= form.number_field :quantity, value: 1, min: 1 %>
+          <%= form.submit "Add to Cart" %>
+        <% end %>
+      </div>
     </div>
+</div>
 
-    <div>
-      <%= form_with url: add_to_cart_path(@product.id), method: :post do |form| %>
-        <%= form.label :quantity, "Quantity" %>
-        <%= form.number_field :quantity, value: 1, min: 1 %>
-        <%= form.submit "Add to Cart" %>
-      <% end %>
-    </div>
+<div class="description-box">
+  <h2>Product Description</h2>
+  <p><%= @product.description %></p>
 </div>
