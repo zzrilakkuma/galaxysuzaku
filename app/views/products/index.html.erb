@@ -55,7 +55,7 @@
           <% end %>
           <p class="product-card-description"><%= product.description %></p>
           <p class="product-card-price">$<%= product.price %></p>
-          <a href="#" class="product-card-button">Add to Cart</a>
+          <%= link_to 'more', product, class: "product-card-button" %>
         </div>
       </div>
     <% end %>

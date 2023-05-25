@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Order Confirmation</h1>
+    <p>Thank you for your order!</p>
+    <p>Order details:</p>
+    <ul>
+      <li>Order ID: <%= @order.id %></li>
+      <li>Order Date: <%= @order.created_at %></li>
+      <li>Order Total: <%= @order.total %></li>
+    </ul>
+  </body>
+</html>

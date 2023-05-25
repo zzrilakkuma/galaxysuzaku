@@ -1,0 +1,11 @@
+<h1>My Orders</h1>
+
+<% if @orders.any? %>
+  <ul>
+    <% @orders.each do |order| %>
+      <li><%= order.id %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No orders found.</p>
+<% end %>

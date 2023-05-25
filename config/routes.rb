@@ -1,4 +1,8 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  authenticate :admin do
+    mount Sidekiq::Web => "/sidekiq"
+  end
   devise_for :users
   devise_for :admins
 
@@ -17,5 +21,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index]
     get 'dashboard', to: 'dashboard#index'
   end
+
+  get '/users/:id/orders', to: 'users#orders', as: 'user_orders'
 
 end
